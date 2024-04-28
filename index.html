@@ -27,12 +27,20 @@
                     name: "San Yu Aung",
                     age: 26,
                 }
+                this.changeState = this.changeState.bind(this);
             }
+
+            changeState = () => {
+                this.setState(() => ({
+                    name: "Change SYA",
+                }))
+            }
+
             render() {
                 return (
                     <h1>
                         {this.state.name}
-                        <button onClick={() => { alert("ok") }}>Change State</button>
+                        <button onClick={this.changeState}>Change State</button>
                     </h1>
                 )
             }
