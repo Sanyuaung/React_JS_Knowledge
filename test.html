@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        /*const App = () => {
+            return (
+                <h1>Hello React</h1>
+            )
+        }*/
+        class ShowInfo extends React.Component {
+            constructor() {
+                super();
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>
+                            {this.props.state.name} <br />
+                            <button onClick={this.props.changeState}>Change State</button>
+                        </h1>
+                    </div>
+                )
+            }
+        }
+
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    name: "San Yu Aung",
+                    age: 26,
+                }
+                this.changeState = this.changeState.bind(this);
+            }
+
+            changeState = () => {
+                this.setState(() => ({
+                    name: "Change SYA",
+                }))
+            }
+
+            render() {
+                return (
+                    <ShowInfo state={this.state} changeState={this.changeState} />
+                )
+            }
+        }
+        /*class a extends React.Component {
+            constructor() {
+                super();
+            }
+            render() {
+                return (
+                    <DivBox />
+                )
+            }
+        }*/
+        ReactDOM.render(
+            <App />, document.getElementById('app'))
+    </script>
+
+
+</body>
+
+</html>
